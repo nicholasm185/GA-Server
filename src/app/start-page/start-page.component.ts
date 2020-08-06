@@ -19,4 +19,10 @@ export class StartPageComponent implements OnInit {
     })
   }
 
+  getDefault(){
+    this.pythonService.getDefTest().subscribe(data => {
+      console.log(data)
+    })
+  }
+
 }
