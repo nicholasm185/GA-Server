@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PythonHelperService } from '../services/python-helper.service'
+import { FormGroup, FormControl, RequiredValidator, Validators, ReactiveFormsModule } from '@angular/forms'
+
 
 @Component({
   selector: 'app-start-page',
@@ -7,6 +9,12 @@ import { PythonHelperService } from '../services/python-helper.service'
   styleUrls: ['./start-page.component.css']
 })
 export class StartPageComponent implements OnInit {
+
+  constraintsForm = new FormGroup({
+    budget: new FormControl('', [Validators.required, Validators.min(100000)]),
+    duration: new FormControl('', [Validators.required, Validators.min(1)]),
+    noPerson: new FormControl('', [Validators.required, Validators.min(1)])
+  });
 
   constructor(private pythonService : PythonHelperService) { }
 
@@ -23,6 +31,16 @@ export class StartPageComponent implements OnInit {
     this.pythonService.getDefTest().subscribe(data => {
       console.log(data)
     })
+  }
+
+  updateConstraints(){
+    this.pythonService.getConstraints()
+    console.log(this.constraintsForm.value)
+    this.pythonService.updateConstraints(
+      this.constraintsForm.controls['budget'].value,
+      this.constraintsForm.controls['duration'].value,
+      this.constraintsForm.controls['noPerson'].value
+    )
   }
 
 }

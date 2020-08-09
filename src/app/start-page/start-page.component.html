@@ -1,1 +1,68 @@
-<button (click)="getDefault()">click</button>
+<div class="container-md">
+    <div class="row">
+        <H1>Travel Plan</H1>
+    </div>
+    <div class="row">
+        <div class="col" style="justify-content: center;">
+            <form [formGroup]="constraintsForm">
+                <!-- budget -->
+                <div class="form-group row">
+                    <label for="budget" class="col-3 col-form-label">Budget</label>
+                    <div class="col">
+                        <div class="row">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Rp</div>
+                                </div>
+                                <input type="number" class="form-control" id="budget" formControlName='budget'>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <small id="budgetHelp" class="form-text text-muted">Input your estimated budget</small>
+                            <small *ngIf="constraintsForm.controls['budget'].invalid" id="budgetHelp" class="form-text text-danger pl-1">min Rp.100000</small>
+                        </div>
+                    </div>
+                </div>
+                <!-- duration -->
+                <div class="form-group row">
+                    <label for="duration" class="col-3 col-form-label">Duration</label>
+                    <div class="col">
+                        <div class="row">
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="duration" formControlName='duration'>
+                                <div class="input-group-append">
+                                    <div class="input-group-text">Days</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <small id="durationHelp" class="form-text text-muted">How many days are you going to stay?</small>
+                            <small *ngIf="constraintsForm.controls['duration'].invalid" id="budgetHelp" class="form-text text-danger pl-1">min 1 day</small>
+                        </div>
+                    </div>
+                </div>
+                <!-- No. People -->
+                <div class="form-group row">
+                    <label for="noPerson" class="col-3 col-form-label">No. Person</label>
+                    <div class="col">
+                        <div class="row">
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="noPerson" formControlName='noPerson'>
+                                <div class="input-group-append">
+                                    <div class="input-group-text">Person</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <small id="noPersonHelp" class="form-text text-muted">How many are coming? (adults)</small>
+                            <small *ngIf="constraintsForm.controls['noPerson'].invalid" id="budgetHelp" class="form-text text-danger pl-1">min 1 person</small>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" (click)="updateConstraints()" [disabled]="!constraintsForm.valid">Choose preferred activities</button>
+            </form>
+        </div>
+        
+    </div>
+    
+</div>
