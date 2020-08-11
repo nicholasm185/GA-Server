@@ -6,21 +6,29 @@ import { HttpClient } from '@angular/common/http'
 })
 export class PythonHelperService {
 
-  budget = 0
-  duration = 0
-  noPerson = 0
+  paramsSet = false
+
+  private type1 = 'http://122.248.210.71:8080/type1'
+  private type2 = 'http://122.248.210.71:8080/type2'
+  private type3 = 'http://122.248.210.71:8080/type3'
+  private type4 = 'http://122.248.210.71:8080/type4'
 
   constructor(private httpClient: HttpClient) { }
 
-  updateConstraints(budget : number, duration : number, noPerson : number){
-    this.budget = budget
-    this.duration = duration
-    this.noPerson = noPerson
-    console.log(this.budget, this.duration, this.noPerson)
+  updateConstraints(budget, duration, noPerson){
+    localStorage.setItem("budget", budget)
+    localStorage.setItem("duration", duration)
+    localStorage.setItem("noPerson", noPerson)
+    console.log(budget, duration, noPerson)
+    this.paramsSet = true
+  }
+
+  isParamsSet(){
+    return this.paramsSet
   }
 
   getConstraints(){
-    console.log(this.budget, this.duration, this.noPerson)
+    console.log(localStorage.getItem("budget"), localStorage.getItem("duration"), localStorage.getItem("noPerson"))
   }
 
   getTest(){
@@ -29,5 +37,38 @@ export class PythonHelperService {
 
   getDefTest(){
     return this.httpClient.get('http://122.248.210.71:8080/default')
+  }
+
+  postType1(){
+    return this.httpClient.post(this.type1,
+      {
+        noPerson: localStorage.getItem("noPerson"),
+        budget: localStorage.getItem("budget"),
+        duration: localStorage.getItem("duration")
+      })
+  }
+  postType2(){
+    return this.httpClient.post(this.type2,
+      {
+        noPerson: localStorage.getItem("noPerson"),
+        budget: localStorage.getItem("budget"),
+        duration: localStorage.getItem("duration")
+      })
+  }
+  postType3(){
+    return this.httpClient.post(this.type3,
+      {
+        noPerson: localStorage.getItem("noPerson"),
+        budget: localStorage.getItem("budget"),
+        duration: localStorage.getItem("duration")
+      })
+  }
+  postType4(){
+    return this.httpClient.post(this.type4,
+      {
+        noPerson: localStorage.getItem("noPerson"),
+        budget: localStorage.getItem("budget"),
+        duration: localStorage.getItem("duration")
+      })
   }
 }

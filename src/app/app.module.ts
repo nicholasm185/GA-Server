@@ -7,13 +7,15 @@ import { StartPageComponent } from './start-page/start-page.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChooseTagComponentComponent } from './choose-tag-component/choose-tag-component.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    StartPageComponent
+    StartPageComponent,
+    ChooseTagComponentComponent
   ],
   imports: [
     BrowserModule,
