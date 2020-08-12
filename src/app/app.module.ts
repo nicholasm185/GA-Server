@@ -8,6 +8,7 @@ import { StartPageComponent } from './start-page/start-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChooseTagComponentComponent } from './choose-tag-component/choose-tag-component.component';
+import { ResultsPageComponent } from './results-page/results-page.component';
 
 
 
@@ -15,7 +16,8 @@ import { ChooseTagComponentComponent } from './choose-tag-component/choose-tag-c
   declarations: [
     AppComponent,
     StartPageComponent,
-    ChooseTagComponentComponent
+    ChooseTagComponentComponent,
+    ResultsPageComponent
   ],
   imports: [
     BrowserModule,
