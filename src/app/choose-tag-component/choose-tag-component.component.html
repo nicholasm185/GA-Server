@@ -9,22 +9,22 @@
         <div class="row">
             <div class="col">
                 <div class="card">
-                    <img class="card-img-top" src="../../assets/preferenceimgs/{{opt1}}.jpg" alt="img" height="300">
+                    <img class="card-img-top" src="../../assets/preferenceimgs/{{opt1.replace(re,'-')}}.jpg" alt="img" height="300">
                     <div class="card-body">
                         <div class="form-check">
                             <input class="form-check-input" type="radio" id="radioOption1" value="{{opt1}}" formControlName="preference" name="preference">
-                            <label class="form-check-label" for="radioOption1">{{opt1.replace('-', " ")}}</label>
+                            <label class="form-check-label" for="radioOption1">{{opt1.replace(re, ' ')}}</label>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col">
                 <div class="card">
-                    <img class="card-img-top" src="../../assets/preferenceimgs/{{opt2}}.jpg" alt="img" height="300">
+                    <img class="card-img-top" src="../../assets/preferenceimgs/{{opt2.replace(re,'-')}}.jpg" alt="img" height="300">
                     <div class="card-body">
                         <div class="form-check">
                             <input class="form-check-input" type="radio" id="radioOption2" value="{{opt2}}" formControlName="preference" name="preference">
-                            <label class="form-check-label" for="radioOption2">{{opt2.replace('-', " ")}}</label>
+                            <label class="form-check-label" for="radioOption2">{{opt2.replace(re, ' ')}}</label>
                         </div>
                     </div>
                 </div>

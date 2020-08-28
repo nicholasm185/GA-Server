@@ -8,11 +8,11 @@ import { isNull } from 'util';
 export class PreferenceTrackerService {
 
   preference = {
-    "amusement-park": 0,
-    "art-and-culture": 0,
+    "amusement_park": 0,
+    "art_and_culture": 0,
     "beach": 0,
-    "kids-friendly": 0,
-    "local-favorite": 0,
+    "kids_friendly": 0,
+    "local_favorite": 0,
     "museum": 0,
     "outdoors": 0,
     "history": 0
@@ -23,11 +23,11 @@ export class PreferenceTrackerService {
   getPreference(){
     if(localStorage.getItem("preference") === null){
       this.preference = {
-        "amusement-park": 0,
-        "art-and-culture": 0,
+        "amusement_park": 0,
+        "art_and_culture": 0,
         "beach": 0,
-        "kids-friendly": 0,
-        "local-favorite": 0,
+        "kids_friendly": 0,
+        "local_favorite": 0,
         "museum": 0,
         "outdoors": 0,
         "history": 0
@@ -54,7 +54,9 @@ export class PreferenceTrackerService {
   }
 
   getTopTags(){
-    return Object.entries(this.preference).sort((a,b) => b[1] - a[1])
+    var sorted = Object.entries(this.preference).sort((a,b) => b[1] - a[1])
+    var topTags = sorted[0][0] + ',' + sorted[1][0] + ',' + sorted[2][0]
+    return topTags
   }
 
   resetTags(){

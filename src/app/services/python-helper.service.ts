@@ -12,6 +12,8 @@ export class PythonHelperService {
   private type2 = 'http://122.248.210.71:8080/type2'
   private type3 = 'http://122.248.210.71:8080/type3'
   private type4 = 'http://122.248.210.71:8080/type4'
+  private type5 = 'http://122.248.210.71:8080/type5'
+  private type6 = 'http://122.248.210.71:8080/type6'
 
   constructor(private httpClient: HttpClient) { }
 
@@ -20,11 +22,11 @@ export class PythonHelperService {
     localStorage.setItem("duration", duration)
     localStorage.setItem("noPerson", noPerson)
     console.log(budget, duration, noPerson)
-    this.paramsSet = true
+    localStorage.setItem("paramsSet", "1")
   }
 
   isParamsSet(){
-    return this.paramsSet
+    return Number(localStorage.getItem("paramsSet"))
   }
 
   getConstraints(){
@@ -32,7 +34,7 @@ export class PythonHelperService {
   }
 
   getTest(){
-    return this.httpClient.get('http://122.248.210.71:8080/helper/testMessage')
+    return this.httpClient.post('http://122.248.210.71:8080/default',{})
   }
 
   getDefTest(){
@@ -40,35 +42,46 @@ export class PythonHelperService {
   }
 
   postType1(){
-    return this.httpClient.post(this.type1,
-      {
-        noPerson: localStorage.getItem("noPerson"),
-        budget: localStorage.getItem("budget"),
-        duration: localStorage.getItem("duration")
-      })
+    var fd = new FormData()
+    fd.append('noPeople', localStorage.getItem("noPerson"))
+    fd.append('budget', localStorage.getItem("budget"))
+    fd.append('duration', localStorage.getItem("duration"))
+    return this.httpClient.post(this.type5,fd)
   }
   postType2(){
-    return this.httpClient.post(this.type2,
-      {
-        noPerson: localStorage.getItem("noPerson"),
-        budget: localStorage.getItem("budget"),
-        duration: localStorage.getItem("duration")
-      })
+    var fd = new FormData()
+    fd.append('noPeople', localStorage.getItem("noPerson"))
+    fd.append('budget', localStorage.getItem("budget"))
+    fd.append('duration', localStorage.getItem("duration"))
+    return this.httpClient.post(this.type5,fd)
   }
   postType3(){
-    return this.httpClient.post(this.type3,
-      {
-        noPerson: localStorage.getItem("noPerson"),
-        budget: localStorage.getItem("budget"),
-        duration: localStorage.getItem("duration")
-      })
+    var fd = new FormData()
+    fd.append('noPeople', localStorage.getItem("noPerson"))
+    fd.append('budget', localStorage.getItem("budget"))
+    fd.append('duration', localStorage.getItem("duration"))
+    return this.httpClient.post(this.type5,fd)
   }
   postType4(){
-    return this.httpClient.post(this.type4,
-      {
-        noPerson: localStorage.getItem("noPerson"),
-        budget: localStorage.getItem("budget"),
-        duration: localStorage.getItem("duration")
-      })
+    var fd = new FormData()
+    fd.append('noPeople', localStorage.getItem("noPerson"))
+    fd.append('budget', localStorage.getItem("budget"))
+    fd.append('duration', localStorage.getItem("duration"))
+    return this.httpClient.post(this.type5,fd)
+  }
+  postType5(){
+    var fd = new FormData()
+    fd.append('noPeople', localStorage.getItem("noPerson"))
+    fd.append('budget', localStorage.getItem("budget"))
+    fd.append('duration', localStorage.getItem("duration"))
+    return this.httpClient.post(this.type5,fd)
+  }
+  postType6(tags){
+    var fd = new FormData()
+    fd.append('noPeople', localStorage.getItem("noPerson"))
+    fd.append('budget', localStorage.getItem("budget"))
+    fd.append('duration', localStorage.getItem("duration"))
+    fd.append('tags', tags)
+    return this.httpClient.post(this.type5,fd)
   }
 }

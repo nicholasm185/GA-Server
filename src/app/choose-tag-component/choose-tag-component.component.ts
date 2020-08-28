@@ -12,12 +12,13 @@ export class ChooseTagComponentComponent implements OnInit {
 
   opt1 = ""
   opt2 = ""
+  re = RegExp('_',"g")
 
   preferenceForm = new FormGroup({
     preference : new FormControl('', [Validators.required])
   })
 
-  constructor(pythonService: PythonHelperService, private preferenceTrack: PreferenceTrackerService) { }
+  constructor(private pythonService: PythonHelperService, private preferenceTrack: PreferenceTrackerService) { }
 
   ngOnInit(): void {
     this.preferenceTrack.getPreference()
@@ -32,12 +33,20 @@ export class ChooseTagComponentComponent implements OnInit {
   }
 
   getFinalValues(){
-    this.preferenceTrack.getTopTags()
+    var topTags = this.preferenceTrack.getTopTags()
+    console.log(topTags)
+    this.pythonService.postType6(topTags).subscribe(data => {
+      localStorage.setItem('results', JSON.stringify(data))
+    })
   }
 
   resetPreferences(){
     this.preferenceTrack.resetTags()
     window.location.reload()
+  }
+
+  requestResults(){
+
   }
 
 }
