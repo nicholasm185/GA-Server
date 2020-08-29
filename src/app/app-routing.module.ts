@@ -11,7 +11,8 @@ const routes: Routes = [
   {path: 'pickTags', component: ChooseTagComponentComponent
   ,canActivate: [CheckConstraintsGuard]
   },
-  {path: 'results', component: ResultsPageComponent}
+  {path: 'results', component: ResultsPageComponent
+  ,canActivate: [CheckConstraintsGuard]}
 ];
 
 @NgModule({

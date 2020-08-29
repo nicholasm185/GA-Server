@@ -3,6 +3,11 @@
         <H1>Travel Plan</H1>
     </div>
     <div class="row">
+        <div *ngIf="processing == 1" class="alert alert-info" role="alert">
+            Generating plan, please wait
+          </div>
+    </div>
+    <div class="row">
         <h3>Choose your preference</h3>
     </div>
     <form [formGroup]="preferenceForm">
