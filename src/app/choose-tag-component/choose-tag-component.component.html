@@ -39,10 +39,21 @@
             <button class="btn btn-primary" (click)="updatePreference()" [disabled]="!preferenceForm.valid">Next</button>
         </div>
         <div class="row mt-3">
-            <button class="btn btn-primary" (click)="getFinalValues()">Submit and get results</button>
+            <div class="col">
+                <button class="btn btn-primary" (click)="getFinalValues6()">Submit and get results (type6)</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-primary" (click)="getFinalValues7()">Submit and get results (type7)</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-primary" (click)="getFinalValues5()">Submit without preferences</button>
+            </div>
         </div>
         <div class="row mt-3">
-            <button class="btn btn-danger" (click)="resetPreferences()">Reset Preferences</button>
+            <button class="btn btn-danger" *ngIf="hasPreferences()" (click)="resetPreferences()">Reset Preferences</button>
+        </div>
+        <div class="row mt-3">
+            <button class="btn btn-warning" (click)="router.navigate(['/'])">Back</button>
         </div>
     </form>
 </div>

@@ -21,7 +21,7 @@ export class ChooseTagComponentComponent implements OnInit {
     preference : new FormControl('', [Validators.required])
   })
 
-  constructor(private pythonService: PythonHelperService, private preferenceTrack: PreferenceTrackerService, private router: Router) { }
+  constructor(private pythonService: PythonHelperService, private preferenceTrack: PreferenceTrackerService, public router: Router) { }
 
   ngOnInit(): void {
     this.preferenceTrack.getPreference()
@@ -35,7 +35,19 @@ export class ChooseTagComponentComponent implements OnInit {
     window.location.reload()
   }
 
-  getFinalValues(){
+  getFinalValues5(){
+    this.processing = 1
+    var topTags = this.preferenceTrack.getTopTags()
+    console.log(topTags)
+    this.pythonService.postType5().subscribe(data => {
+      localStorage.setItem('results', JSON.stringify(data))
+      if(!isNull(localStorage.getItem('results'))){
+        this.router.navigate(['/results'])
+      }
+    })
+  }
+
+  getFinalValues6(){
     this.processing = 1
     var topTags = this.preferenceTrack.getTopTags()
     console.log(topTags)
@@ -45,6 +57,26 @@ export class ChooseTagComponentComponent implements OnInit {
         this.router.navigate(['/results'])
       }
     })
+  }
+
+  getFinalValues7(){
+    this.processing = 1
+    var topTags = this.preferenceTrack.getTopTags()
+    console.log(topTags)
+    this.pythonService.postType7(topTags).subscribe(data => {
+      localStorage.setItem('results', JSON.stringify(data))
+      if(!isNull(localStorage.getItem('results'))){
+        this.router.navigate(['/results'])
+      }
+    })
+  }
+
+  hasPreferences(){
+    if(isNull(localStorage.getItem("preference"))){
+      return false
+    } else{
+      return true
+    }
   }
 
   resetPreferences(){

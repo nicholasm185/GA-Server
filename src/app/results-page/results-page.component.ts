@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { of } from 'rxjs';
 import { take, first } from 'rxjs/operators';
 import { isNull, isUndefined } from 'util';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-results-page',
@@ -15,7 +16,7 @@ export class ResultsPageComponent implements OnInit {
     re = RegExp(' ',"g")
     details = {}
     
-    constructor(private db: AngularFirestore) { }
+    constructor(private db: AngularFirestore, public router: Router) { }
 
     ngOnInit(): void {
         this.data = JSON.parse(localStorage.getItem('results'))
@@ -26,6 +27,11 @@ export class ResultsPageComponent implements OnInit {
 
     getDays(){
         return this.data["0"]['per-day-route']
+    }
+
+    resetAll(){
+        localStorage.clear()
+        this.router.navigate(['/'])
     }
 
 
