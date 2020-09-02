@@ -31,8 +31,13 @@ export class ChooseTagComponentComponent implements OnInit {
   }
 
   updatePreference(){
-    this.preferenceTrack.updatePreference(this.preferenceForm.controls["preference"].value)
-    window.location.reload()
+    if(this.preferenceForm.controls["preference"].value != ""){
+      this.preferenceTrack.updatePreference(this.preferenceForm.controls["preference"].value)
+      window.location.reload()
+    } else{
+      window.location.reload()
+    }
+    
   }
 
   getFinalValues5(){

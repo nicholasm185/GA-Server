@@ -13,10 +13,12 @@
     <div class="row mt-3">
         <div class="card mx-auto">
             <div class="card-body">
-                <p>Total Expenses: Rp{{data["0"]["totalExpenses"]}}</p>
-                <p>Total HTM: Rp{{data["0"]["HTM"]}}</p>
-                <p>Travel Expenses: Rp{{data["0"]["travelExpenses"]}}</p>
-                <p>Travel distance: {{data["0"]["totalDist"]/1000}}km</p>
+                <h5 class="card-title">Trip Details</h5>
+                <p class="card-text">Total Expenses: Rp{{data["0"]["totalExpenses"]}}</p>
+                <p class="card-text">Total HTM: Rp{{data["0"]["HTM"]}}</p>
+                <p class="card-text">Travel Expenses: Rp{{data["0"]["travelExpenses"]}}</p>
+                <p class="card-text">Travel distance: {{data["0"]["totalDist"]/1000}}km</p>
+                <p class="card-text text-danger"><strong>Please participate in the questionnaire <a class="card-link" href="https://forms.gle/7Gk6PJmKUAL6EnWE7">Click Here</a></strong></p>
             </div>
         </div>
     </div>
