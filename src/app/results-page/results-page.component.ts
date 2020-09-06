@@ -31,7 +31,7 @@ export class ResultsPageComponent implements OnInit {
 
     resetAll(){
         localStorage.clear()
-        this.router.navigate(['/'])
+        this.router.navigate(['/start'])
     }
 
 

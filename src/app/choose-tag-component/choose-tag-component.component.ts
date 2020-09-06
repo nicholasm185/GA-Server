@@ -76,6 +76,18 @@ export class ChooseTagComponentComponent implements OnInit {
     })
   }
 
+  getFinalValues8(){
+    this.processing = 1
+    var topTags = this.preferenceTrack.getTopTags()
+    console.log(topTags)
+    this.pythonService.postType8(topTags).subscribe(data => {
+      localStorage.setItem('results', JSON.stringify(data))
+      if(!isNull(localStorage.getItem('results'))){
+        this.router.navigate(['/results'])
+      }
+    })
+  }
+
   hasPreferences(){
     if(isNull(localStorage.getItem("preference"))){
       return false

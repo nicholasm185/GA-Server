@@ -15,6 +15,7 @@ export class PythonHelperService {
   private type5 = 'http://122.248.210.71:8080/type5'
   private type6 = 'http://122.248.210.71:8080/type6'
   private type7 = 'http://122.248.210.71:8080/type7'
+  private type8 = 'http://122.248.210.71:8080/type8'
 
   constructor(private httpClient: HttpClient) { }
 
@@ -92,5 +93,13 @@ export class PythonHelperService {
     fd.append('duration', localStorage.getItem("duration"))
     fd.append('tags', tags)
     return this.httpClient.post(this.type7,fd)
+  }
+  postType8(tags){
+    var fd = new FormData()
+    fd.append('noPeople', localStorage.getItem("noPerson"))
+    fd.append('budget', localStorage.getItem("budget"))
+    fd.append('duration', localStorage.getItem("duration"))
+    fd.append('tags', tags)
+    return this.httpClient.post(this.type8,fd)
   }
 }
