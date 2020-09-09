@@ -5,6 +5,7 @@ import { ChooseTagComponentComponent } from './choose-tag-component/choose-tag-c
 import { CheckConstraintsGuard } from './check-constraints.guard';
 import { ResultsPageComponent } from './results-page/results-page.component';
 import { IntroPageComponent } from './intro-page/intro-page.component';
+import { NewResultsPageComponent } from './new-results-page/new-results-page.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,7 @@ const routes: Routes = [
   {path: 'pickTags', component: ChooseTagComponentComponent
   ,canActivate: [CheckConstraintsGuard]
   },
-  {path: 'results', component: ResultsPageComponent
+  {path: 'newResults', component: NewResultsPageComponent
   ,canActivate: [CheckConstraintsGuard]}
 ];
 

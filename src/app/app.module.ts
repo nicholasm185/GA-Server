@@ -15,6 +15,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { IntroPageComponent } from './intro-page/intro-page.component';
+import { NewResultsPageComponent } from './new-results-page/new-results-page.component';
 
 var firebaseConfig = {
   apiKey: "AIzaSyCI6EVaqRT6Df551Bfp4CQdPDRSqrzWnnU",
@@ -33,7 +34,8 @@ var firebaseConfig = {
     StartPageComponent,
     ChooseTagComponentComponent,
     ResultsPageComponent,
-    IntroPageComponent
+    IntroPageComponent,
+    NewResultsPageComponent
   ],
   imports: [
     BrowserModule,

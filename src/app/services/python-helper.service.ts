@@ -8,14 +8,14 @@ export class PythonHelperService {
 
   paramsSet = false
 
-  private type1 = 'http://122.248.210.71:8080/type1'
-  private type2 = 'http://122.248.210.71:8080/type2'
-  private type3 = 'http://122.248.210.71:8080/type3'
-  private type4 = 'http://122.248.210.71:8080/type4'
-  private type5 = 'http://122.248.210.71:8080/type5'
-  private type6 = 'http://122.248.210.71:8080/type6'
-  private type7 = 'http://122.248.210.71:8080/type7'
-  private type8 = 'http://122.248.210.71:8080/type8'
+  private type1 = 'http://175.41.179.70:8080/type1'
+  private type2 = 'http://175.41.179.70:8080/type2'
+  private type3 = 'http://175.41.179.70:8080/type3'
+  private type4 = 'http://175.41.179.70:8080/type4'
+  private type5 = 'http://175.41.179.70:8080/type5'
+  private type6 = 'http://175.41.179.70:8080/type6'
+  private type7 = 'http://175.41.179.70:8080/type7'
+  private type8 = 'http://175.41.179.70:8080/type8'
 
   constructor(private httpClient: HttpClient) { }
 
