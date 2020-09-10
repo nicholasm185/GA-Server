@@ -13,11 +13,11 @@
     <div class="row pt-4">
         <div class="col">
             <button class="btn btn-primary" (click)="swithSelected('a')" [disabled]="TypeAResults == null" *ngIf="TypeAResults != null">Type A Results</button>
-            <button class="btn btn-secondary" (click)="swithSelected('b')" [disabled]="TypeAResults == null" *ngIf="TypeAResults == null">Loading Type A</button>
+            <button class="btn btn-secondary" (click)="swithSelected('b')" [disabled]="TypeAResults == null" *ngIf="TypeAResults == null"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading Type A</button>
         </div>
         <div class="col">
             <button class="btn btn-primary" (click)="swithSelected('b')" [disabled]="TypeBResults == null" *ngIf="TypeBResults != null">Type B Results</button>
-            <button class="btn btn-secondary" (click)="swithSelected('b')" [disabled]="TypeBResults == null" *ngIf="TypeBResults == null">Loading Type B</button>
+            <button class="btn btn-secondary" (click)="swithSelected('b')" [disabled]="TypeBResults == null" *ngIf="TypeBResults == null"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading Type B</button>
         </div>
     </div>
     <div class="row mt-3">
@@ -36,7 +36,7 @@
         <div class="row mt-3">
             <H3>Day {{i+1}}</H3>
         </div>
-        <div *ngFor="let y of x">
+        <div *ngFor="let y of x; index as j">
             <div class="row mt-3">
                 <div class="card mx-auto">
                     <img class="card-img-top" src="../../assets/pictures/Pictures/{{y.replace(re,'-').toLowerCase()}}.jpg" height="300">
@@ -44,6 +44,15 @@
                         <p class="lead">{{y}}</p>
                         <p>HTM: Rp.{{selectDetails[y]['ticketPrice']}}</p>
                         <p>Est. duration: {{selectDetails[y]['visitDuration']}} hrs</p>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="x.indexOf(y) != x.length -1" class="row mt-r">
+                <div class="media mt-3">
+                    <img src="https://image.flaticon.com/icons/svg/54/54785.svg" class="mr-3" alt="distance" height="20px">
+                    <div class="media-body">
+                        <h5 class="mt-0">Distance to next destination</h5>
+                        <p>{{distance[y+'to'+x[j+1]]/1000}}KM</p>
                     </div>
                 </div>
             </div>

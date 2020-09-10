@@ -14,7 +14,7 @@ export class ChooseTagComponentComponent implements OnInit {
 
   opt1 = ""
   opt2 = ""
-  re = RegExp('_',"g")
+  re = RegExp('-',"g")
   processing = 0
 
   preferenceForm = new FormGroup({

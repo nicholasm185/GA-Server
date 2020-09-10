@@ -2,6 +2,8 @@ import { Component, OnInit, Type } from '@angular/core';
 import { PythonHelperService } from '../services/python-helper.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { PreferenceTrackerService } from '../services/preference-tracker.service';
+import { isNull } from 'util';
 
 @Component({
   selector: 'app-new-results-page',
@@ -10,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class NewResultsPageComponent implements OnInit {
 
-  constructor(private pythonService: PythonHelperService, private db: AngularFirestore, public router: Router) { }
+  constructor(private pythonService: PythonHelperService, private db: AngularFirestore, public router: Router, private preferenceTrack: PreferenceTrackerService) { }
 
   selected : Object
   TypeAResults: Object
@@ -27,23 +29,29 @@ export class NewResultsPageComponent implements OnInit {
 
   detailsA = {}
   detailsB = {}
+
+  distance = {}
+  distanceA = {}
+  distanceB = {}
   
   selectDetails = {}
 
-  testTags = "museum,beach,art-and-culture"
-
   ngOnInit(): void {
-    this.pythonService.postType8(this.testTags).subscribe(data => {
+    this.pythonService.postType8(this.preferenceTrack.getTopTags()).subscribe(data => {
       if(data !== this.TypeAResults){
         this.TypeAResults = data
         this.daysA = data["0"]['per-day-route']
+        this.getDistance(this.daysA, this.distanceA)
+        console.log(this.distanceA)
         this.fireQuery(data["0"]['per-day-route'], this.detailsA)
       }
     })
-    this.pythonService.postType5().subscribe(data => {
+    this.pythonService.postType8(this.preferenceTrack.getAllTags()).subscribe(data => {
       if(data !== this.TypeBResults){
         this.TypeBResults = data
         this.daysB = data["0"]['per-day-route']
+        this.getDistance(this.daysB, this.distanceB)
+        console.log(this.distanceB)
         this.fireQuery(data["0"]['per-day-route'], this.detailsB)
       }
     })
@@ -54,10 +62,12 @@ export class NewResultsPageComponent implements OnInit {
       this.selected = this.TypeAResults
       this.selectDetails = this.detailsA
       this.days = this.daysA
+      this.distance = this.distanceA
     } else if (type == "b") {
       this.selected = this.TypeBResults
       this.selectDetails = this.detailsB
       this.days = this.daysB
+      this.distance = this.distanceB
     }
     console.log(this.selected)
     console.log(this.selectDetails)
@@ -78,6 +88,18 @@ testRefresh(){
         }
     }
 }
+
+  getDistance(days, distanceDict){
+  days.forEach(x => {
+    x.forEach(y => {
+      if(x.indexOf(y) != x.length - 1){
+        this.pythonService.postGetDistance(y, x[x.indexOf(y)+1]).subscribe(data => {
+          distanceDict[y+"to"+x[x.indexOf(y)+1]] = data['distance']
+        })
+      }
+    });
+  });
+  }
 
 resetAll(){
   localStorage.clear()
