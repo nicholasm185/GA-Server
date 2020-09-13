@@ -36,6 +36,8 @@ export class NewResultsPageComponent implements OnInit {
   
   selectDetails = {}
 
+  savedSpots = []
+
   ngOnInit(): void {
     this.pythonService.postType8(this.preferenceTrack.getTopTags()).subscribe(data => {
       if(data !== this.TypeAResults){
@@ -63,20 +65,38 @@ export class NewResultsPageComponent implements OnInit {
       this.selectDetails = this.detailsA
       this.days = this.daysA
       this.distance = this.distanceA
+      this.savedSpots = []
     } else if (type == "b") {
       this.selected = this.TypeBResults
       this.selectDetails = this.detailsB
       this.days = this.daysB
       this.distance = this.distanceB
+      this.savedSpots = []
     }
     console.log(this.selected)
     console.log(this.selectDetails)
     console.log(this.days)
   }
 
-testRefresh(){
-  this.selected = this.TypeAResults
-}
+  testRefresh(){
+    this.selected = this.TypeAResults
+  }
+
+  saveSpot(x: string){
+    var i = this.savedSpots.indexOf(x)
+    if(i == -1){
+      this.savedSpots.push(x)
+    }
+    console.log(this.savedSpots)
+  }
+
+  removeSpot(x: string){
+    var i = this.savedSpots.indexOf(x)
+    if(i !== -1){
+      this.savedSpots.splice(i, 1)
+    }
+    console.log(this.savedSpots)
+  }
 
   fireQuery(dRoute, det){
     for(let x of dRoute){
@@ -101,9 +121,15 @@ testRefresh(){
   });
   }
 
-resetAll(){
-  localStorage.clear()
-  this.router.navigate(['/start'])
-}
+  resetAll(){
+    localStorage.clear()
+    this.router.navigate(['/start'])
+  }
+  
+
+  shakeOff(){
+    localStorage.setItem("savedSpots", this.savedSpots.join(','))
+    this.router.navigate(['shookResults'])
+  }
 
 }

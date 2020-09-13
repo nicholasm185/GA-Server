@@ -16,7 +16,10 @@ export class PythonHelperService {
   private type6 = 'http://175.41.179.70:8080/type6'
   private type7 = 'http://175.41.179.70:8080/type7'
   private type8 = 'http://175.41.179.70:8080/type8'
+  // private type8 = 'http://localhost:8080/type8'
   private reqDist = 'http://175.41.179.70:8080/getDistance'
+  private shake = 'http://175.41.179.70:8080/shakeOff'
+  // private shake = 'http://localhost:8080/shakeOff'
 
   constructor(private httpClient: HttpClient) { }
 
@@ -102,6 +105,15 @@ export class PythonHelperService {
     fd.append('duration', localStorage.getItem("duration"))
     fd.append('tags', tags)
     return this.httpClient.post(this.type8,fd)
+  }
+  shakeOff(tags, savedSpots: string){
+    var fd = new FormData()
+    fd.append('noPeople', localStorage.getItem("noPerson"))
+    fd.append('budget', localStorage.getItem("budget"))
+    fd.append('duration', localStorage.getItem("duration"))
+    fd.append('tags', tags)
+    fd.append('rspots', savedSpots)
+    return this.httpClient.post(this.shake,fd)
   }
 
   postGetDistance(origin: string, destination: string){

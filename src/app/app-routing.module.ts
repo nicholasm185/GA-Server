@@ -6,6 +6,7 @@ import { CheckConstraintsGuard } from './check-constraints.guard';
 import { ResultsPageComponent } from './results-page/results-page.component';
 import { IntroPageComponent } from './intro-page/intro-page.component';
 import { NewResultsPageComponent } from './new-results-page/new-results-page.component';
+import { ShookResultsPageComponent } from './shook-results-page/shook-results-page.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,9 @@ const routes: Routes = [
   ,canActivate: [CheckConstraintsGuard]
   },
   {path: 'newResults', component: NewResultsPageComponent
+  ,canActivate: [CheckConstraintsGuard]}
+  ,
+  {path: 'shookResults', component: ShookResultsPageComponent
   ,canActivate: [CheckConstraintsGuard]}
 ];
 

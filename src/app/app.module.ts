@@ -16,6 +16,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { IntroPageComponent } from './intro-page/intro-page.component';
 import { NewResultsPageComponent } from './new-results-page/new-results-page.component';
+import { ShookResultsPageComponent } from './shook-results-page/shook-results-page.component';
 
 var firebaseConfig = {
   apiKey: "AIzaSyCI6EVaqRT6Df551Bfp4CQdPDRSqrzWnnU",
@@ -35,7 +36,8 @@ var firebaseConfig = {
     ChooseTagComponentComponent,
     ResultsPageComponent,
     IntroPageComponent,
-    NewResultsPageComponent
+    NewResultsPageComponent,
+    ShookResultsPageComponent
   ],
   imports: [
     BrowserModule,
