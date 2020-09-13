@@ -24,10 +24,10 @@
         <div class="card mx-auto">
             <div class="card-body">
                 <h5 class="card-title">Trip Details</h5>
-                <p class="card-text">Total Expenses: Rp{{selected["0"]["totalExpenses"]}}</p>
-                <p class="card-text">Total HTM: Rp{{selected["0"]["HTM"]}}</p>
-                <p class="card-text">Travel Expenses: Rp{{selected["0"]["travelExpenses"]}}</p>
-                <p class="card-text">Travel distance: {{selected["0"]["totalDist"]/1000}}km</p>
+                <p class="card-text">Total Expenses: Rp{{numberWithCommas(selected["0"]["totalExpenses"])}}</p>
+                <p class="card-text">Total HTM: Rp{{numberWithCommas(selected["0"]["HTM"])}}</p>
+                <p class="card-text">Travel Expenses: Rp{{numberWithCommas(selected["0"]["travelExpenses"])}}</p>
+                <p class="card-text">Travel distance: {{numberWithCommas(selected["0"]["totalDist"]/1000)}}km</p>
                 <button *ngIf="savedSpots.length > 0" class="btn btn-success" (click)="shakeOff()">Shake off</button>
                 <p class="card-text text-danger"><strong>Please participate in the questionnaire <a class="card-link" href="https://forms.gle/7Gk6PJmKUAL6EnWE7">Click Here</a></strong></p>
             </div>
@@ -43,7 +43,7 @@
                     <img class="card-img-top" src="../../assets/pictures/Pictures/{{y.replace(re,'-').toLowerCase()}}.jpg" height="300">
                     <div class="card-body">
                         <p class="lead">{{y}}</p>
-                        <p>HTM: Rp.{{selectDetails[y]['ticketPrice']}}</p>
+                        <p>HTM: Rp.{{numberWithCommas(selectDetails[y]['ticketPrice'])}}</p>
                         <p>Est. duration: {{selectDetails[y]['visitDuration']}} hrs</p>
                         <button *ngIf="savedSpots.indexOf(y) == -1" class="btn btn-primary" (click)="saveSpot(y)">Save Spot</button>
                         <button *ngIf="savedSpots.indexOf(y) !== -1" class="btn btn-warning" (click)="removeSpot(y)">Remove Spot</button>

@@ -80,4 +80,8 @@ export class ShookResultsPageComponent implements OnInit {
     window.location.reload()
   }
 
+  numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
 }
