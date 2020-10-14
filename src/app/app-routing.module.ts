@@ -7,11 +7,13 @@ import { ResultsPageComponent } from './results-page/results-page.component';
 import { IntroPageComponent } from './intro-page/intro-page.component';
 import { NewResultsPageComponent } from './new-results-page/new-results-page.component';
 import { ShookResultsPageComponent } from './shook-results-page/shook-results-page.component';
+import { ConsentFormPageComponent } from './consent-form-page/consent-form-page.component';
 
 
 const routes: Routes = [
   {path: '', component: IntroPageComponent},
   {path: 'start', component: StartPageComponent},
+  {path: 'consentForm', component: ConsentFormPageComponent},
   {path: 'pickTags', component: ChooseTagComponentComponent
   ,canActivate: [CheckConstraintsGuard]
   },

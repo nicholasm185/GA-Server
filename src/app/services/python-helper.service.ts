@@ -20,6 +20,7 @@ export class PythonHelperService {
   private reqDist = 'http://175.41.179.70:8080/getDistance'
   private shake = 'http://175.41.179.70:8080/shakeOff'
   // private shake = 'http://localhost:8080/shakeOff'
+  private reqConsent = "http://175.41.179.70:8080/recordConsent"
 
   constructor(private httpClient: HttpClient) { }
 
@@ -121,5 +122,11 @@ export class PythonHelperService {
     fd.append("origin", origin)
     fd.append("destination", destination)
     return this.httpClient.post(this.reqDist, fd)
+  }
+
+  recordConsent(name: string){
+    var fd = new FormData()
+    fd.append("name", name)
+    return this.httpClient.post(this.reqConsent, fd)
   }
 }

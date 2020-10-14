@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="jumbotron">
+            <h1>INFORMED CONSENT FORM</h1>
+            <h2>VOLUNTARY PARTICIPATION</h2>
+            <p>Taking part in this research study is voluntary. You do not have to participate in this research. If you choose to take part, you have the right to stop at any time. If you decide not to participate or if you decide to stop taking part in the research at a later date, there will be no penalty or loss of benefits to which you are otherwise entitled.<br> 
+                Your investigator may take you out of the research study without your permission. Some possible reasons for this are: you did not follow the study instructions or your data seemed to be invalid.</p>
+            <h2>STATEMENT OF CONFIDENTIALITY</h2>
+            <p>
+                All information collected is confidential and anonymous. Any information from the study will only be made public in an anonymous group format, so that individuals will not be identifiable.<br>
+                By ticking the checkbox below, you indicate that you have read the information written above, agree to participate in this study and give permission for the study to be recorded.
+            </p>
+            <label>Name:<input type="text" class="form-control" [formControl]="name"></label>
+            <label>
+                By ticking the checkbox below, you indicate that you have read the information written above, agree to participate in this study and give permission for the study to be recorded.
+                <input class="form-control" type="checkbox" [(ngModel)]="marked" data-md-icheck (change)="toggleMarked($event)">
+            </label>
+            <button class="btn btn-primary btn-lg" (click)="goToNext()" role="button" [disabled]="!(marked && name.valid)">Start</button>
+        </div>
+    </div>
+</div>
